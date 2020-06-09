@@ -1,0 +1,15 @@
+[Unit]
+Description=HCI Daemon
+After=network-online.target
+Wants=network-online.target systemd-networkd-wait-online.service
+
+StartLimitIntervalSec=500
+StartLimitBurst=5
+
+[Service]
+Restart=on-failure
+ExecStart=/bin/bash /home/pi/HCI_Project/Bot/files/launcher.sh
+User=pi
+
+[Install]
+WantedBy=multi-user.target
